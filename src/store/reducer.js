@@ -1,15 +1,18 @@
 // import { combineReducers } from 'redux'
 
+// 纯函数
+
 const defaultState = {
     todoList: []
 };
 
 export default (state = defaultState, action) => {
+    console.log(action);
     let newState = JSON.parse(JSON.stringify(state));
-    if(action.type === "add") {
+    if (action.type === "add") {
         newState.todoList.push(action.text);
         return newState;
-    } else if(action.type === "del") {
+    } else if (action.type === "del") {
         newState.todoList.pop();
         return newState;
     }

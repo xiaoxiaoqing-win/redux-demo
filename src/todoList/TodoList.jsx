@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Input, List, Button } from 'antd';
 import store from '../store';
+import { addTodoList, delTodoList } from '../store/actionCreater';
 
 
 export default class TodoList extends Component {
@@ -22,14 +23,13 @@ export default class TodoList extends Component {
 
     handleClick = () =>  {
         const { inputValue } = this.state;
-        store.dispatch({
-            type: 'add',
-            text: inputValue
-        });
+        const addData = addTodoList(inputValue);
+        store.dispatch(addData);
     }
 
     handleListItemClick = () => {
-        store.dispatch({type: 'del'})
+        const delData =  delTodoList();
+        store.dispatch(delData)
     }
     render() {
         // console.log(this.state.sub, 9876);
