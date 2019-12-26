@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Input, List, Button } from 'antd';
+import TodoListUI from './TodoListUI';
 import store from '../store';
 import { addTodoList, delTodoList } from '../store/actionCreater';
 
@@ -21,7 +21,7 @@ export default class TodoList extends Component {
         this.setState(store.getState())
     }
 
-    handleClick = () =>  {
+    handleAddClick = () =>  {
         const { inputValue } = this.state;
         const addData = addTodoList(inputValue);
         store.dispatch(addData);
@@ -34,26 +34,12 @@ export default class TodoList extends Component {
     render() {
         // console.log(this.state.sub, 9876);
         return (
-            <div style={{width: '60%', margin: '10px auto'}}>
-                <div style={{display: "flex", marginBottom: 10}}>
-                    <Input placeholder="add a thing" onBlur={this.handleInputBlur}/>
-                    <Button
-                        type="primary"
-                        style={{marginLeft: 10}}
-                        onClick={this.handleClick}
-                    >添加</Button>
-                </div>
-                <List
-                    header={<h4>待完成事项</h4>}
-                    bordered
-                    dataSource={store.getState().todoList}
-                    renderItem={item => (
-                        <List.Item onClick={this.handleListItemClick}>
-                            {item}
-                        </List.Item>
-                    )}
-                />
-            </div>
+            <TodoListUI 
+                onBlur={this.handleInputBlur}
+                onAddClick={this.handleAddClick}
+                dataSource={store.getState().todoList}
+                onDeleteClick={this.handleListItemClick}
+            />
         );
     }
 }

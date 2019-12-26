@@ -7,7 +7,6 @@ const defaultState = {
 };
 
 export default (state = defaultState, action) => {
-    console.log(action);
     let newState = JSON.parse(JSON.stringify(state));
     if (action.type === "add") {
         newState.todoList.push(action.text);
@@ -17,4 +16,4 @@ export default (state = defaultState, action) => {
         return newState;
     }
     return state;
-}
+}  
