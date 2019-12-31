@@ -13,8 +13,8 @@ export default (state = defaultState, action) => {
         newState.todoList.push(action.text);
         return newState;
     } else if (action.type === DEL) {
-        newState.todoList.pop();
+        let index = action.index;
+        newState.todoList.splice(index, 1);
         return newState;
     }
-    return state;
 }  

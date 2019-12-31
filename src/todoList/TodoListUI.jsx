@@ -16,8 +16,8 @@ const TodoListUI = (props) => {
                     header={<h4>待完成事项</h4>}
                     bordered
                     dataSource={props.dataSource}
-                    renderItem={item => (
-                        <List.Item onClick={props.onDeleteClick}>
+                    renderItem={(item,index) => (
+                        <List.Item onClick={() => props.onDeleteClick(index)}>
                             {item}
                         </List.Item>
                     )}

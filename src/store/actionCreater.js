@@ -5,9 +5,9 @@ export const addTodoList = (value) => ({      // 简便写法返回一个对象�
     text: value,
 })
 
-export const delTodoList = () => ({
+export const delTodoList = (index) => ({
     type: DEL,
-    // text: value
+    index,
 })
 
 

@@ -27,8 +27,9 @@ export default class TodoList extends Component {
         store.dispatch(addData);
     }
 
-    handleListItemClick = () => {
-        const delData =  delTodoList();
+    handleListItemClick = (index) => {
+        console.log(index);
+        const delData =  delTodoList(index);
         store.dispatch(delData)
     }
     render() {
@@ -37,7 +38,7 @@ export default class TodoList extends Component {
             <TodoListUI 
                 onBlur={this.handleInputBlur}
                 onAddClick={this.handleAddClick}
-                dataSource={store.getState().todoList}
+                dataSource={store?.getState()?.todoList}
                 onDeleteClick={this.handleListItemClick}
             />
         );
