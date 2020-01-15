@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import TodoListUI from './TodoListUI';
 import store from '../store';
 import { addTodoList, delTodoList } from '../store/actionCreater';
-import { connect } from 'react-redux';
 
 
-class TodoList extends Component {
+export default class TodoList extends Component {
     constructor(props) {
         super(props);
         store.subscribe(this.changeData);
@@ -45,7 +44,3 @@ class TodoList extends Component {
         );
     }
 }
-
-const defaultj = connect("xxx", "uuuu")(TodoList)
-
-export default defaultj;
